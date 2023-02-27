@@ -1,5 +1,7 @@
 package si.ds.sr.demo_app.utils;
 
+import java.util.List;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -16,7 +18,7 @@ import si.ds.sr.demo_app.model.Tournament;
  * @author Damjan Šavko
  *
  */
-public class Parser {
+public class JsonUtil {
 
 	public static void main(String[] args) {
 
@@ -67,6 +69,12 @@ public class Parser {
 
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(matchesAsJson, Match[].class);
+	}
+	
+	public static String matches2json(List<Match> matches) throws JsonProcessingException{
+
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(matches);
 	}
 
 	/**
