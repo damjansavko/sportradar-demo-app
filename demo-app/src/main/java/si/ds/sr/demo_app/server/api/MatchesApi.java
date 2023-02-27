@@ -2,6 +2,7 @@ package si.ds.sr.demo_app.server.api;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

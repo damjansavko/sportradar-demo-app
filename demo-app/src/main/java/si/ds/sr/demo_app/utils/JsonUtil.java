@@ -96,7 +96,7 @@ public class JsonUtil {
 	}
 	
 	/**
-	 * Deserializes Match objects to a Json string
+	 * Deserializes objects to a Json string
 	 * 
 	 * @param matches
 	 * @return
