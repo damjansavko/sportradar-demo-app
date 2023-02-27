@@ -1,5 +1,9 @@
 package si.ds.sr.demo_app.utils;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -16,7 +20,7 @@ import si.ds.sr.demo_app.model.Tournament;
  * @author Damjan Šavko
  *
  */
-public class Parser {
+public class JsonUtil {
 
 	public static void main(String[] args) {
 
@@ -37,7 +41,7 @@ public class Parser {
 	}
 
 	/**
-	 * 
+	 * Reads a Json representing Sport entities and serializes it to an array of objects
 	 * @param sportsAsJson
 	 * @return
 	 * @throws JsonMappingException
@@ -50,6 +54,7 @@ public class Parser {
 	}
 
 	/**
+	 * Reads a Json representing Tournament entities and serializes it to an array of objects
 	 * 
 	 * @param tournamentsAsJson
 	 * @return
@@ -63,10 +68,44 @@ public class Parser {
 		return mapper.readValue(tournamentsAsJson, Tournament[].class);
 	}
 
+	/**
+	 * Reads a Json representing Match entities and serializes it to an array of objects
+	 * 
+	 * @param matchesAsJson
+	 * @return
+	 * @throws JsonMappingException
+	 * @throws JsonProcessingException
+	 */
 	public static Match[] parseMatches(String matchesAsJson) throws JsonMappingException, JsonProcessingException {
 
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(matchesAsJson, Match[].class);
+	}
+	
+	/**
+	 * Returns a stream of objects representing the input json
+	 * 
+	 * @param matchesAsJson
+	 * @return
+	 * @throws JsonMappingException
+	 * @throws JsonProcessingException
+	 */
+	public static Stream<Match> json2stream(String matchesAsJson) throws JsonMappingException, JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		return Arrays.stream(mapper.readValue(matchesAsJson, Match[].class));
+	}
+	
+	/**
+	 * Deserializes Match objects to a Json string
+	 * 
+	 * @param matches
+	 * @return
+	 * @throws JsonProcessingException
+	 */
+	public static String matches2json(List<Match> matches) throws JsonProcessingException{
+
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(matches);
 	}
 
 	/**
@@ -87,6 +126,12 @@ public class Parser {
 		return objectMapper.writeValueAsString(jsonNode);
 	}
 	
+	/**
+	 * Removes spaces from a pretty printed Json
+	 * 
+	 * @param json
+	 * @return
+	 */
 	public static String prettyPrintRawJson(String json) {
 		
 		return json.replaceAll("\\s", "");

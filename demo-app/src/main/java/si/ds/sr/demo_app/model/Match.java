@@ -19,6 +19,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "id", "tournamentId", "start_time", "status", "home_team", "away_team", "home_score","away_score" })
 public class Match {
+		
+	public enum STATUS{ COMPLETED, SCHEDULED, LIVE} 
 
 	@JsonProperty("id")
 	private Integer id;
@@ -78,6 +80,22 @@ public class Match {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	/**
+	 * Is the match live
+	 * @return
+	 */
+	public boolean isLive() {
+		return STATUS.LIVE.name().equalsIgnoreCase(this.status);
+	}
+	
+	/**
+	 * Has the match finished/completed.
+	 * @return
+	 */
+	public boolean hasCompleted() {
+		return STATUS.COMPLETED.name().equalsIgnoreCase(this.status);
+	}
 
 	@JsonProperty("home_team")
 	public String getHomeTeam() {
@@ -128,5 +146,7 @@ public class Match {
 	public void setAdditionalProperty(String name, Object value) {
 		this.additionalProperties.put(name, value);
 	}
+
+	
 
 }
