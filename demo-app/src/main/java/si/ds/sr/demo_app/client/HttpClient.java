@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 import si.ds.sr.demo_app.model.Match;
 import si.ds.sr.demo_app.model.Sport;
 import si.ds.sr.demo_app.model.Tournament;
-import si.ds.sr.demo_app.model.utils.Parser;
+import si.ds.sr.demo_app.utils.Parser;
 
 
 /**

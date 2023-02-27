@@ -1,4 +1,4 @@
-package si.ds.sr.demo_app.model.utils;
+package si.ds.sr.demo_app.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
