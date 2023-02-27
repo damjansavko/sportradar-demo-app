@@ -85,6 +85,7 @@ public class Match {
 	 * Is the match live
 	 * @return
 	 */
+	@JsonIgnore
 	public boolean isLive() {
 		return STATUS.LIVE.name().equalsIgnoreCase(this.status);
 	}
@@ -93,6 +94,7 @@ public class Match {
 	 * Has the match finished/completed.
 	 * @return
 	 */
+	@JsonIgnore
 	public boolean hasCompleted() {
 		return STATUS.COMPLETED.name().equalsIgnoreCase(this.status);
 	}

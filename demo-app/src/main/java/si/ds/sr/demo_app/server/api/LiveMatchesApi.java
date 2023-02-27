@@ -3,6 +3,7 @@ package si.ds.sr.demo_app.server.api;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,6 +21,7 @@ import si.ds.sr.demo_app.client.HttpClient;
 import si.ds.sr.demo_app.model.Match;
 import si.ds.sr.demo_app.server.RestApplication;
 import si.ds.sr.demo_app.utils.JsonUtil;
+import si.ds.sr.demo_app.utils.MatchesUtils;
 
 @Path("/liveMatches")
 public class LiveMatchesApi {
@@ -38,11 +40,10 @@ public class LiveMatchesApi {
 			HttpClient httpClient = new HttpClient(RestApplication.MATCHES_ENDPOINT);
 			appResponse = httpClient.fetchData("/match/all");
 			
-			Stream<Match> streamOfMatches = JsonUtil.json2stream(appResponse);
-			streamOfMatches = streamOfMatches.filter(m -> m.isLive());
+			List<Match> matches = JsonUtil.json2matches(appResponse);
+			matches = MatchesUtils.filterLiveOnly(matches);				
 			
-			appResponse = JsonUtil.matches2json(streamOfMatches.collect(Collectors.toList()));
-			
+			appResponse = JsonUtil.matches2json(matches);			
 		}
 		catch (IOException e) {
 			log.error("Error processing data: ", e);

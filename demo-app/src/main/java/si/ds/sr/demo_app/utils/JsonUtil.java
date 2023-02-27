@@ -83,6 +83,18 @@ public class JsonUtil {
 	}
 	
 	/**
+	 * Reads a Json representing Match entities and serializes it to a list of objects
+	 * 
+	 * @param matchesAsJson
+	 * @return
+	 * @throws JsonMappingException
+	 * @throws JsonProcessingException
+	 */
+	public static List<Match> json2matches(String matchesAsJson) throws JsonMappingException, JsonProcessingException {
+		return Arrays.asList(parseMatches(matchesAsJson));
+	}
+	
+	/**
 	 * Returns a stream of objects representing the input json
 	 * 
 	 * @param matchesAsJson
