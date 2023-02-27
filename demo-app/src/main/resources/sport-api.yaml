@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Demo SportRadar API
+  description: An API for retrieving data about sport events
+  contact:
+    email: damjan.savko@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: "0.1"
+servers:
+- url: /
+paths:
+  /completedMatches:
+    get:
+      summary: Return all completed matches
+      description: Return all completed matches
+      operationId: getCompletedMatches
+      parameters:
+      - name: team
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: Sacramento
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+  /liveMatches:
+    get:
+      summary: Return all live matches
+      description: Return all live matches
+      operationId: getLiveMatches
+      parameters:
+      - name: team
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: Sacramento
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+  /matches:
+    get:
+      summary: Return all matches
+      description: Return all matches
+      operationId: getMatches
+      parameters:
+      - name: team
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: Sacramento
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+components:
+  schemas:
+    Match:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        tournamentId:
+          type: integer
+          example: 2
+        start_time:
+          type: string
+          example: 2022-02-06T03:10:38Z
+        status:
+          type: string
+          example: COMPLETED
+        home_team:
+          type: string
+          example: Sacramento Kings
+        away_team:
+          type: string
+          example: Oklahoma City Thunder
+        home_score:
+          type: integer
+          example: 113
+        away_score:
+          type: integer
+          example: 103
