@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import si.ds.sr.demo_app.client.HttpClient;
 import si.ds.sr.demo_app.model.Match;
@@ -14,9 +16,11 @@ import si.ds.sr.demo_app.server.RestApplication;
 import si.ds.sr.demo_app.utils.JsonUtil;
 import si.ds.sr.demo_app.utils.MatchesUtils;
 
+@TestInstance(Lifecycle.PER_CLASS)
 public class TestMatchFiltering {
 
 	public List<Match> matches;
+	
 	
 	@BeforeAll
 	public void setUp() throws Exception {
