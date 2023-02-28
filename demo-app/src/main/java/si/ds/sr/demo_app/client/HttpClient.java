@@ -78,6 +78,40 @@ public class HttpClient {
 		
 		return responseString;		
 	}
+	
+	/**
+	 * Retrieve the data  about matches
+	 * 
+	 * @return
+	 * @throws IOException 
+	 * @throws ClientProtocolException 
+	 */
+	public String fetchMatches() throws ClientProtocolException, IOException {
+		return fetchData("/match/all");
+	}
+	
+	/**
+	 * Retrieve the data about tournaments
+	 * 
+	 * @return
+	 * @throws IOException 
+	 * @throws ClientProtocolException 
+	 */
+	public String fetchTournaments() throws ClientProtocolException, IOException {
+		return fetchData("/tournament/all");
+	}
+	
+	/**
+	 * Retrieve the data about sports
+	 * 
+	 * @return
+	 * @throws IOException 
+	 * @throws ClientProtocolException 
+	 */
+	public String fetchSports() throws ClientProtocolException, IOException {
+		return fetchData("/sport/all");
+	}
+
 
 	/**
 	 * Test if the given parameter is a valid URL address

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import si.ds.sr.demo_app.model.Match;
+import si.ds.sr.demo_app.model.MatchInfo;
 import si.ds.sr.demo_app.model.Sport;
 import si.ds.sr.demo_app.model.Tournament;
 
@@ -52,6 +53,18 @@ public class JsonUtil {
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(sportsAsJson, Sport[].class);
 	}
+	
+	/**
+	 * Reads a Json representing Sport entities and serializes it to a list of objects
+	 * @param sportsAsJson
+	 * @return
+	 * @throws JsonMappingException
+	 * @throws JsonProcessingException
+	 */
+	public static List<Sport> json2sports(String sportsAsJson) throws JsonMappingException, JsonProcessingException {
+
+		return Arrays.asList(parseSports(sportsAsJson));
+	}
 
 	/**
 	 * Reads a Json representing Tournament entities and serializes it to an array of objects
@@ -66,6 +79,18 @@ public class JsonUtil {
 
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(tournamentsAsJson, Tournament[].class);
+	}
+	
+	/**
+	 * Reads a Json representing Tournament entities and serializes it to a list of objects
+	 * 
+	 * @param matchesAsJson
+	 * @return
+	 * @throws JsonMappingException
+	 * @throws JsonProcessingException
+	 */
+	public static List<Tournament> json2tournaments(String tournamentsAsJson) throws JsonMappingException, JsonProcessingException {
+		return Arrays.asList(parseTournaments(tournamentsAsJson));
 	}
 
 	/**
@@ -119,6 +144,19 @@ public class JsonUtil {
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(matches);
 	}
+	
+	/**
+	 * Deserializes objects to a Json string
+	 * 
+	 * @param matches
+	 * @return
+	 * @throws JsonProcessingException
+	 */
+	public static String matchesInfo2json(List<MatchInfo> matchesInfo) throws JsonProcessingException {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(matchesInfo);
+	}
 
 	/**
 	 * Reads JSON values where the field names are not quoted and generates a JSON
@@ -148,5 +186,7 @@ public class JsonUtil {
 		
 		return json.replaceAll("\\s", "");
 	}
+
+	
 
 }
