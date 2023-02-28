@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+    <head>
+        <title>Sport Radar API</title>
+    
+    </head>
+    
+    <body>
+    
+        <style>
+            body {
+                font-family: Verdana, sans-serif;
+                font-size: 12px;
+                padding: 10px 10px 10px 10px;               
+            }
+            
+            h1 {
+            	font-size: 20px;
+                padding: 10px;
+            }
+            
+            li {
+            	padding: 5px;
+            	font-size: 14px;
+            }
+           
+            fieldset {
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+           
+            legend {
+                font-size: 16px;
+                padding: 10px;
+            }
+           
+            .main-panel {
+                width: 100%;
+                max-width: 800px;
+                min-width:300px;
+                border: 1px solid gray;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+           
+        </style>
+    
+        <div class="main-panel">
+            
+            <h1>SportRadar</h1>
+            
+            <fieldset>
+                <legend>API resources</legend>
+               
+                <ul>
+                	<li><a href="/api/matches" target="_blank">All matches</a></li>
+                		<ul>
+						  <li><a href="api/matches?team=Portland" target="_blank">Show only Portland matches</a></li>
+						  <li><a href="/api/matches?team=Chicago" target="_blank">Show only teams from Chicago</a></li>
+						</ul>
+                	<li><a href="/api/liveMatches" target="_blank">Show all live matches</a></li>
+                	<li><a href="/api/completedMatches" target="_blank">Show all completed matches</a></li>
+                </ul>
+           
+            </fieldset>            
+        </div>
+       
+    </body>
+
+</html>
