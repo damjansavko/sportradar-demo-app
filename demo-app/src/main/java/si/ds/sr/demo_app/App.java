@@ -10,7 +10,7 @@ import si.ds.sr.demo_app.model.Tournament;
 import si.ds.sr.demo_app.utils.JsonUtil;
 
 /**
- * Hello world!
+ * Class for testing purposes
  *
  */
 public class App {
@@ -26,7 +26,8 @@ public class App {
 
 			HttpClient httpClient = new HttpClient(endpointAddress);
 
-			String response = httpClient.fetchData("/sport/all");
+//			String response = httpClient.fetchData("/sport/all");
+			String response = httpClient.fetchSports();
 			log.debug(JsonUtil.prettyPrintRawJson(response));
 			
 			Sport[] sports = JsonUtil.parseSports(response);
@@ -35,7 +36,8 @@ public class App {
 				log.debug(sport.getName());
 			}
 
-			String response2 = httpClient.fetchData("/tournament/all");
+//			String response2 = httpClient.fetchData("/tournament/all");
+			String response2 = httpClient.fetchTournaments();
 			log.debug(JsonUtil.prettyPrintRawJson(response2));
 			
 			Tournament[] tournaments = JsonUtil.parseTournaments(response2);
@@ -44,7 +46,8 @@ public class App {
 				log.debug(tournament.getName());
 			}
 
-			String response3 = httpClient.fetchData("/match/all");
+//			String response3 = httpClient.fetchData("/match/all");
+			String response3 = httpClient.fetchMatches();
 			log.debug(JsonUtil.prettyPrintRawJson(response3));
 			
 			Match[] matches = JsonUtil.parseMatches(response3);
