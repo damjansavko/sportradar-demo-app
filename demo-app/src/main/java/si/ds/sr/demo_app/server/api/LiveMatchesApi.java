@@ -39,7 +39,7 @@ public class LiveMatchesApi {
 		try {
 			
 			HttpClient httpClient = new HttpClient(RestApplication.MATCHES_ENDPOINT);
-			appResponse = httpClient.fetchData("/match/all");
+			appResponse = httpClient.fetchMatches();
 			
 			List<Match> matches = JsonUtil.json2matches(appResponse);
 			matches = MatchesUtils.filterLiveOnly(matches);				
