@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 
 import si.ds.sr.demo_app.client.HttpClient;
 import si.ds.sr.demo_app.model.Match;
+import si.ds.sr.demo_app.model.MatchInfo;
 import si.ds.sr.demo_app.server.RestApplication;
 import si.ds.sr.demo_app.utils.JsonUtil;
 import si.ds.sr.demo_app.utils.MatchesUtils;
@@ -40,7 +41,8 @@ public class CompletedMatchesApi {
 			List<Match> matches = JsonUtil.json2matches(appResponse);
 			matches = MatchesUtils.filterCompletedOnly(matches);				
 			
-			appResponse = JsonUtil.matches2json(matches);
+			List<MatchInfo> matchesInfo = MatchesUtils.convertMatches(matches);
+			appResponse = JsonUtil.matchesInfo2json(matchesInfo);
 			
 		}
 		catch (IOException e) {
