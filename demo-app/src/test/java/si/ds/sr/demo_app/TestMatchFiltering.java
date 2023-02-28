@@ -26,7 +26,7 @@ public class TestMatchFiltering {
 	public void setUp() throws Exception {
 		
 		HttpClient httpClient = new HttpClient(RestApplication.MATCHES_ENDPOINT);
-		String appResponse = httpClient.fetchData("/match/all");
+		String appResponse = httpClient.fetchMatches();
 		matches = JsonUtil.json2matches(appResponse);
 	}
 
